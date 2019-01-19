@@ -13,13 +13,13 @@ public class VideoStoreTest {
     }
 
     @Test
-    public void testSingleNewReleaseStatement(){
+    public void should_add_one_new_release_movie(){
         customer.addRental(new Rental(new Movie("The cell", Movie.NEW_RELEASE), 3));
         Assert.assertEquals(customer.statement(), "Rental Record for Fred\n\tThe cell\t9.0\nYou owed 9.0\nYou earned 2 frequent renter points \n");
     }
 
     @Test
-    public void testDualNewReleaseStatement() {
+    public void should_add_two_new_release_movies() {
         customer.addRental(new Rental(new Movie("The cell", Movie.NEW_RELEASE), 3));
         customer.addRental(new Rental(new Movie("The Tigger Movie", Movie.NEW_RELEASE), 3));
 
@@ -27,7 +27,7 @@ public class VideoStoreTest {
     }
 
     @Test
-    public void testSingleChildrensStatement() {
+    public void should_add_one_children_movie() {
         customer.addRental(new Rental(new Movie("The Tigger Movie", Movie.CHILDREN), 3));
 
         Assert.assertEquals(customer.statement(), "Rental Record for Fred\n\tThe Tigger Movie\t1.5\nYou owed 1.5\nYou earned 1 frequent renter points \n");
@@ -35,7 +35,7 @@ public class VideoStoreTest {
     }
 
     @Test
-    public void testMultipleRegularStatement() {
+    public void should_add_three_regular_movies() {
         customer.addRental(new Rental(new Movie("Plan 9 from Outer Space", Movie.REGULAR), 1));
         customer.addRental(new Rental(new Movie("8 1/2", Movie.REGULAR), 2));
         customer.addRental(new Rental(new Movie("Eraserhead", Movie.REGULAR), 3));

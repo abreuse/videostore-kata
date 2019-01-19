@@ -1,6 +1,4 @@
-import alexis.breuse.Customer;
-import alexis.breuse.Movie;
-import alexis.breuse.Rental;
+import alexis.breuse.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +14,7 @@ public class VideoStoreTest {
 
     @Test
     public void should_add_one_new_release_movie(){
-        customer.addRental(new Rental(new Movie("The cell", Movie.NEW_RELEASE), 3));
+        customer.addRental(new Rental(MovieFactory.createNewReleaseMovie("The cell"), 3));
 
         Assert.assertEquals("Rental Record for Fred\n" +
                         "\tThe cell\t9.0\n" +
@@ -27,8 +25,8 @@ public class VideoStoreTest {
 
     @Test
     public void should_add_two_new_release_movies() {
-        customer.addRental(new Rental(new Movie("The cell", Movie.NEW_RELEASE), 3));
-        customer.addRental(new Rental(new Movie("The Tigger Movie", Movie.NEW_RELEASE), 3));
+        customer.addRental(new Rental(MovieFactory.createNewReleaseMovie("The cell"), 3));
+        customer.addRental(new Rental(MovieFactory.createNewReleaseMovie("The Tigger Movie"), 3));
 
         Assert.assertEquals("Rental Record for Fred\n" +
                 "\tThe cell\t9.0\n" +
@@ -40,7 +38,7 @@ public class VideoStoreTest {
 
     @Test
     public void should_add_one_children_movie() {
-        customer.addRental(new Rental(new Movie("The Tigger Movie", Movie.CHILDREN), 3));
+        customer.addRental(new Rental(MovieFactory.createChildrenMovie("The Tigger Movie"), 3));
 
         Assert.assertEquals("Rental Record for Fred\n" +
                         "\tThe Tigger Movie\t1.5\n" +
@@ -52,9 +50,9 @@ public class VideoStoreTest {
 
     @Test
     public void should_add_three_regular_movies() {
-        customer.addRental(new Rental(new Movie("Plan 9 from Outer Space", Movie.REGULAR), 1));
-        customer.addRental(new Rental(new Movie("8 1/2", Movie.REGULAR), 2));
-        customer.addRental(new Rental(new Movie("Eraserhead", Movie.REGULAR), 3));
+        customer.addRental(new Rental(MovieFactory.createRegularMovie("Plan 9 from Outer Space"), 1));
+        customer.addRental(new Rental(MovieFactory.createRegularMovie("8 1/2"), 2));
+        customer.addRental(new Rental(MovieFactory.createRegularMovie("Eraserhead"), 3));
 
         Assert.assertEquals("Rental Record for Fred\n" +
                 "\tPlan 9 from Outer Space\t2.0\n" +

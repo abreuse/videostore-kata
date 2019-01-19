@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class VideoStoreTest {
 
+    private Customer customer;
+
     @Before
     public void setUp() {
         customer = new Customer("Fred");
@@ -15,6 +17,7 @@ public class VideoStoreTest {
     @Test
     public void should_add_one_new_release_movie(){
         customer.addRental(new Rental(new Movie("The cell", Movie.NEW_RELEASE), 3));
+
         Assert.assertEquals("Rental Record for Fred\n" +
                         "\tThe cell\t9.0\n" +
                         "You owed 9.0\n" +
@@ -61,6 +64,4 @@ public class VideoStoreTest {
                 "You earned 3 frequent renter points \n",
                 customer.statement());
     }
-
-    private Customer customer;
 }
